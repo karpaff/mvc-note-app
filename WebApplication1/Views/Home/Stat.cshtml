@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Category Statistics";
+    var dates = ViewData["Date"] as DateTime[];
+    var minDate = dates[0];
+    var maxDate = dates[1];
+}
+
+<h1>Statistics</h1>
+<p>Total number of notes: @ViewData["NoteCount"]</p>
+<p>Minimum note date: @minDate</p>
+<p>Maximum note date: @maxDate</p>
+<p>Total number of categories: @ViewData["CategoryCount"]</p>
+<p>Number of notes per category:</p>
+<ul>
+    @foreach (var item in (Dictionary<string, int>)ViewData["NotesPerCategory"])
+    {
+        <li>@item.Key: @item.Value</li>
+    }
+</ul>
+
+</br>
+<a asp-area="" asp-controller="Note" asp-action="All">All notes</a>
+</br>
+<a asp-area="" asp-controller="Category" asp-action="All">All categories</a>
+</br>
+<a asp-area="" asp-controller="Home" asp-action="Index">Home page</a>

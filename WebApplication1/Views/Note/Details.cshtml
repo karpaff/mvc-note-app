@@ -1,0 +1,19 @@
+﻿@model WebApplication1.Models.Note
+
+@{
+    ViewData["Title"] = "Note Details";
+}
+
+<h1>@Model.Title</h1>
+<p><strong>Date:</strong> @Model.Date.ToShortDateString()</p>
+<p><strong>Description:</strong> @Model.Description</p>
+<p><strong>Categories:</strong></p>
+<ul>
+    @foreach (var category in Model.Categories)
+    {
+        <li>@category.Title</li>
+    }
+</ul>
+
+</br>
+<a asp-area="" asp-controller="Home" asp-action="Index">Home page</a>

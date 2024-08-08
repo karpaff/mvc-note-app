@@ -1,0 +1,38 @@
+﻿@model IEnumerable<WebApplication1.Models.Category>
+
+@{
+    ViewData["Title"] = "All Categories";
+}
+
+<h1>All Categories</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var category in Model)
+        {
+            <tr>
+                <td><a href="@Url.Action("Details", new { id = category.Id })">@category.Title</a></td>
+                <td>@category.Description</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = category.Id })" class="btn btn-primary">Edit</a>
+                </td>   
+                <td>
+                    <form method="post" asp-action="Remove" asp-route-id="@category.Id">
+                        <button type="submit" class="btn btn-danger">Remove</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="@Url.Action("Add")" class="btn btn-primary">New category</a>
+
+</br>
+<a asp-area="" asp-controller="Home" asp-action="Index">Home page</a>

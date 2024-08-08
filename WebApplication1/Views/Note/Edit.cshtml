@@ -1,0 +1,38 @@
+﻿@model WebApplication1.Models.Note
+
+@{
+    ViewData["Title"] = "Edit Note";
+}
+
+<h1>Edit Note</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label asp-for="Title" class="control-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description" class="control-label"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+@*     <div class="form-group">
+        <label asp-for="Categories" class="control-label"></label>
+        @if (ViewBag.Categories != null && ViewBag.Categories.Any())
+        {
+            <select asp-for="Categories" class="form-control" asp-items="@(new SelectList(ViewBag.Categories, "Id", "Title"))" multiple>
+            </select>
+        }
+        else
+        {
+            <p>No categories available</p>
+        }
+        <span asp-validation-for="Categories" class="text-danger"></span>
+    </div> *@
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+        </br>
+<a asp-area="" asp-controller="Home" asp-action="Index">Home page</a>

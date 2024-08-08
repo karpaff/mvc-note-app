@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Notes";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to NoteApp</h1>
+    <b>Here you can</b>
+    </br>
+    <a asp-area="" asp-controller="Note" asp-action="All">See all notes</a>
+    </br>
+    <a asp-area="" asp-controller="Note" asp-action="Filter">Search notes</a>
+    </br>
+    <a asp-area="" asp-controller="Category" asp-action="All"> See all categories</a>
+    </br>
+    <a asp-area="" asp-controller="Note" asp-action="Add">Add a new note</a>
+    </br>
+    <a asp-area="" asp-controller="Category" asp-action="Add">Add a new category</a>
+    </br>
+    <a asp-area="" asp-controller="Home" asp-action="Stat">See statistics</a>
+    </br>
+    <a asp-area="" asp-controller="Home" asp-action="Export">Export all notes & categories as JSON</a>
+
+</div>

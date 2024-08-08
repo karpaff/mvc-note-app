@@ -1,0 +1,47 @@
+﻿@model WebApplication1.Models.Note
+
+@{
+    ViewData["Title"] = "Add New Note";
+    var categories = ViewBag.Categories as List<WebApplication1.Models.Category>;
+}
+
+<h1>Add New Note</h1>
+
+<form asp-action="Add">
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <label asp-for="Date"></label>
+        <input asp-for="Date" type="date" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="selectedCategories">Categories</label>
+        <select multiple="multiple" class="form-control" id="selectedCategories">
+            @foreach (var category in categories)
+            {
+                <option value="@category.Id">@category.Title</option>
+            }
+        </select>
+    </div>
+    <input type="hidden" name="selectedCategories" id="selectedCategoriesHidden" />
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+</br>
+
+<a asp-area="" asp-controller="Home" asp-action="Index">Home page</a>
+
+@section Scripts {
+    <script>
+        document.querySelector('form').addEventListener('submit', function() {
+            var selectedCategories = Array.from(document.getElementById('selectedCategories').selectedOptions).map(option => option.value);
+            document.getElementById('selectedCategoriesHidden').value = selectedCategories.join(',');
+        });
+    </script>
+}

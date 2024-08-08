@@ -1,0 +1,39 @@
+﻿@model IEnumerable<WebApplication1.Models.Note>
+
+@{
+    ViewData["Title"] = "All Notes";
+}
+
+<h1>All Notes</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var note in Model)
+        {
+            <tr>
+                <td><a href="@Url.Action("Details", new { id = note.Id })">@note.Title</a></td>
+                <td>@note.Date.ToShortDateString()</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = note.Id })" class="btn btn-primary">Edit</a>
+                </td>
+                <td>
+                    <form method="post" asp-action="Remove" asp-route-id="@note.Id">
+                        <button type="submit" class="btn btn-danger">Remove</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+    <a href="@Url.Action("Add")" class="btn btn-primary">New note</a>
+
+                    </br>
+<a asp-area="" asp-controller="Home" asp-action="Index">Home page</a>

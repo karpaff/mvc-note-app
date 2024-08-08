@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Filter Notes";
+}
+
+<h1>Filter Notes</h1>
+
+<!-- Форма для фильтрации по ключевым словам -->
+<form asp-action="Filter" method="post">
+    <div class="form-group">
+        <label for="searchWords">Search Words:</label>
+        <input type="text" id="searchWords" name="searchWords" class="form-control" placeholder="Enter search words">
+    </div>
+    <button type="submit" class="btn btn-primary">Filter by Search Words</button>
+</form>
+
+<br />
+
+<!-- Отображение отфильтрованных заметок -->
+@if (Model != null && Model.Count > 0)
+{
+    <h2>Filtered Notes</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var note in Model)
+            {
+                <tr>
+                    <td>@note.Title</td>
+                    <td>@note.Description</td>
+                    <td>@note.Date.ToShortDateString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No notes found.</p>
+}
+
+            </br>
+<a asp-area="" asp-controller="Home" asp-action="Index">Home page</a>

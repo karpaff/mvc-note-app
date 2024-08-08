@@ -1,0 +1,19 @@
+﻿@model WebApplication1.Models.Category
+
+@{
+    ViewData["Title"] = "Category Details";
+}
+
+<h1>@Model.Title</h1>
+<p><strong>Description:</strong> @Model.Description</p>
+
+<h2>Associated Notes</h2>
+<ul>
+    @foreach (var note in Model.Notes)
+    {
+        <li><a href="@Url.Action("Details", "Note", new { id = note.Id })">@note.Title</a></li>
+    }
+</ul>
+
+</br>
+<a asp-area="" asp-controller="Home" asp-action="Index">Home page</a>
